@@ -43,7 +43,7 @@ export class SonosCommandMapping {
 
       case SonosCommands.Notify:
         return await device.PlayNotification(payload);
-      
+
       case SonosCommands.NotifyTwo:
         return await device.PlayNotificationTwo(payload);
 
@@ -99,6 +99,9 @@ export class SonosCommandMapping {
       case SonosCommands.SetNightmode:
         return await device.SetNightMode(String(payload) === 'On');
 
+      case SonosCommands.SetSpeechEnhancement:
+        return await device.SetSpeechEnhancement(String(payload) === 'On');
+
       case SonosCommands.SetTransportUri:
         return await device.SetAVTransportURI(payload)
 
@@ -125,7 +128,7 @@ export class SonosCommandMapping {
           return await device.PlayTTS(payload)
         }
         break;
-      
+
       case SonosCommands.SpeakTwo:
         if(typeof payload === "object") {
           return await device.PlayTTSTwo(payload)
@@ -134,13 +137,13 @@ export class SonosCommandMapping {
 
       case SonosCommands.Stop:
         return await device.Stop();
-      
+
       case SonosCommands.SwitchToLine:
         return await device.SwitchToLineIn();
 
       case SonosCommands.SwitchToQueue:
         return await device.SwitchToQueue();
-      
+
       case SonosCommands.SwitchToTv:
         return await device.SwitchToTV();
 
@@ -156,15 +159,15 @@ export class SonosCommandMapping {
         break;
 
       case SonosCommands.VolumeDown:
-        return await device.RenderingControlService.SetRelativeVolume({ 
-          InstanceID: 0, Channel: 'Master', 
+        return await device.RenderingControlService.SetRelativeVolume({
+          InstanceID: 0, Channel: 'Master',
           Adjustment: ((typeof payload === 'number') ? payload : 4) * -1})
-          
+
       case SonosCommands.VolumeUp:
-        return await device.RenderingControlService.SetRelativeVolume({ 
-          InstanceID: 0, Channel: 'Master', 
+        return await device.RenderingControlService.SetRelativeVolume({
+          InstanceID: 0, Channel: 'Master',
           Adjustment: ((typeof payload === 'number') ? payload : 4)})
-      
+
       default:
         throw new Error(`Command '${command}' not implemented`)
     }

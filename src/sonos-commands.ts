@@ -22,6 +22,7 @@ export enum SonosCommands {
   SetButtonLockState = 'setbuttonlockstate',
   SetLEDState = 'setledstate',
   SetNightmode = 'setnightmode',
+  SetSpeechEnhancement = 'setspeechenhancement',
   SetTransportUri = 'setavtransporturi',
   SetTreble = 'settreble',
   Sleep = 'sleep',
